@@ -1,3 +1,6 @@
+/* =========================================
+   TU DISEÑO ORIGINAL (ESTRUCTURA Y ENLACES)
+   ========================================= */
 .register-container {
   max-width: 400px;
   margin: 40px auto;
@@ -19,4 +22,94 @@
 
 .login-link a:hover {
   text-decoration: underline;
+}
+
+
+/* =========================================
+   ESTILOS DE LOS FORMULARIOS (NUEVO)
+   ========================================= */
+
+/* Hacemos que los inputs queden bien alineados y con algo de relleno */
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box; /* Evita que el padding rompa el tamaño del contenedor */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+/* Un estilo guapo y moderno para el botón, a juego con el azul de tu enlace */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+/* =========================================
+   MAGIA DE ANGULAR (ERRORES Y VALIDACIONES)
+   ========================================= */
+
+/* Angular pone esta clase si hay errores y el usuario ya tocó el campo */
+input.ng-invalid.ng-touched {
+  border: 2px solid #ff4444;
+  background-color: #fff0f0;
+  outline: none;
+}
+
+/* Angular pone esta clase si el campo está perfecto */
+input.ng-valid.ng-touched {
+  border: 2px solid #00C851;
+}
+
+/* Estilos para los textos rojos de advertencia que metimos con el @if */
+.error-msg small {
+  color: #ff4444;
+  font-size: 0.85rem;
+  font-weight: bold;
+  display: block;
+  margin-top: 4px;
+  text-align: left; /* Los errores se leen mejor alineados a la izquierda bajo el input */
+}
+
+/* =========================================
+   ANIMACIÓN DE CARGA (SPINNER)
+   ========================================= */
+
+/* Estilo para cuando el botón está bloqueado (cargando) */
+button:disabled {
+  background-color: #93c5fd; /* Un azul más claro para que parezca desactivado */
+  cursor: not-allowed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; /* Espacio entre el spinner y el texto */
+}
+
+/* El circulito que da vueltas */
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+/* La animación que hace que gire 360 grados sin parar */
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }

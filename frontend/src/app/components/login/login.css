@@ -1,3 +1,6 @@
+/* =========================================
+   TU DISEÑO BASE
+   ========================================= */
 .login-container {
   max-width: 400px;
   margin: 40px auto;
@@ -6,6 +9,24 @@
   font-family: sans-serif;
 }
 
+.login-link {
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.login-link a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   TUS ESTILOS DEL TOKEN
+   ========================================= */
 .token-success {
   margin-top: 20px;
   padding: 15px;
@@ -18,4 +39,87 @@
   word-break: break-all;
   color: #16a34a; 
   font-family: monospace;
+}
+
+/* =========================================
+   ESTILOS DE INPUTS Y BOTÓN
+   ========================================= */
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+/* =========================================
+   ANIMACIÓN DE CARGA (SPINNER)
+   ========================================= */
+button:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================
+   VALIDACIONES DE ANGULAR Y ERRORES
+   ========================================= */
+input.ng-invalid.ng-touched {
+  border: 2px solid #ff4444;
+  background-color: #fff0f0;
+  outline: none;
+}
+
+input.ng-valid.ng-touched {
+  border: 2px solid #00C851;
+}
+
+.error-msg small {
+  color: #ff4444;
+  font-size: 0.85rem;
+  font-weight: bold;
+  display: block;
+  margin-top: 4px;
+  text-align: left;
+}
+
+.backend-error small {
+  text-align: center;
+  font-size: 0.95rem;
 }
