@@ -1,0 +1,51 @@
+.profile-form {
+  text-align: left;
+  background-color: #f9fafb;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #374151;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Bordes rojos si el input es inválido y ha sido tocado */
+.form-group input.ng-invalid.ng-touched {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.btn-save {
+  background-color: #10b981; /* Verde */
+  color: white;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.btn-save:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}

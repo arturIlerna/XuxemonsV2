@@ -73,4 +73,65 @@ class AuthController extends Controller
             'user' => \PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth::setToken($token)->toUser() // Aquí vendrá el objeto del usuario
         ]);
     }
+
+    // Función para darse de baja/eliminar usuario
+    public function destroy($id)
+    {
+        // Buscamos al usuario por su ID
+        $user = \App\Models\User::find($id);
+
+        // Si no existe, devolvemos un error 404
+        if (!$user) {
+            return response()->json([
+                'message' => 'Usuario no encontrado'
+            ], 404);
+        }
+
+        // Si existe, lo eliminamos de la base de datos
+        $user->delete();
+
+        // Le respondemos a Angular que todo ha ido perfecto (Código 200)
+        return response()->json([
+            'message' => 'Cuenta eliminada correctamente'
+        ], 200);
+    }
+
+    // Función para actualizar el perfil del usuario
+    public function update(Request $request, $id)
+    {
+        // Buscamos al usuario
+        $user = \App\Models\User::find($id);
+
+        if (!$user) {
+            return response()->json(['message' => 'Usuario no encontrado'], 404);
+        }
+
+        // Validamos los datos que nos envía Angular
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            // El unique del email excluye al propio usuario para que no le dé error si no cambia el email
+            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id, 
+            'password' => 'nullable|string|min:6', // Nullable significa que es opcional
+        ]);
+
+        // Actualizamos los datos
+        $user->name = $validatedData['name'];
+        $user->lastname = $validatedData['lastname'];
+        $user->email = $validatedData['email'];
+
+        // Si se rellena la contraseña, la encriptamos y la cambiamos
+        if (!empty($validatedData['password'])) {
+            $user->password = Hash::make($validatedData['password']);
+        }
+
+        // Guardamos en la base de datos
+        $user->save();
+
+        // Devolvemos el usuario actualizado al Frontend
+        return response()->json([
+            'message' => 'Perfil actualizado correctamente',
+            'user' => $user
+        ], 200);
+    }
 }
