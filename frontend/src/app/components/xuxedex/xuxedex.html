@@ -11,3 +11,38 @@
     </div>
   </div>
 </nav>
+
+<main>
+  <header class="page-header">
+    <h1>Mi Xuxedex</h1>
+    <p class="total-count">Total Xuxemons: {{ allXuxemons.length }}</p>
+  </header>
+  @if (isAdmin) {
+    <section class="admin-panel" aria-label="Panel de administración">
+      <h2>Panel de Administración</h2>
+      
+      <div class="admin-controls">
+        <label for="userSelect">Seleccionar usuario:</label>
+        <select 
+          id="userSelect"
+          [(ngModel)]="selectedUserId"
+          (change)="loadUserXuxemons()"
+        >
+          <option value="">-- Selecciona un usuario --</option>
+          @for (user of users; track user.id) {
+            <option [value]="user.id">
+              {{ user.name }} ({{ user.email }})
+            </option>
+          }
+        </select>
+
+        <button 
+          (click)="addRandomXuxemonToSelectedUser()"
+          [disabled]="!selectedUserId"
+          class="btn-admin"
+        >
+          + Añadir Xuxemon Aleatorio
+        </button>
+      </div>
+    </section>
+  }
