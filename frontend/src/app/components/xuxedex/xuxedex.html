@@ -3,7 +3,7 @@
     <a routerLink="/dashboard" class="nav-brand">Xuxemons</a>
     <ul class="nav-menu">
       <li><a routerLink="/xuxedex" routerLinkActive="active">Xuxedex</a></li>
-      <li><a routerLink="/inventory" routerLinkActive="active">Motxilla</a></li>
+      <li><a routerLink="/inventory" routerLinkActive="active">Mochila</a></li>
     </ul>
     <div class="nav-user">
       <span>{{ userName }}</span>
@@ -17,49 +17,17 @@
     <h1>Mi Xuxedex</h1>
     <p class="total-count">Total Xuxemons: {{ allXuxemons.length }}</p>
   </header>
-  @if (isAdmin) {
-    <section class="admin-panel" aria-label="Panel de administración">
-      <h2>Panel de Administración</h2>
-      
-      <div class="admin-controls">
-        <label for="userSelect">Seleccionar usuario:</label>
-        <select 
-          id="userSelect"
-          [(ngModel)]="selectedUserId"
-          (change)="loadUserXuxemons()"
-        >
-          <option value="">-- Selecciona un usuario --</option>
-          @for (user of users; track user.id) {
-            <option [value]="user.id">
-              {{ user.name }} ({{ user.email }})
-            </option>
-          }
-        </select>
 
-        <button 
-          (click)="addRandomXuxemonToSelectedUser()"
-          [disabled]="!selectedUserId"
-          class="btn-admin"
-        >
-          + Añadir Xuxemon Aleatorio
-        </button>
-      </div>
-    </section>
-  }
-   <section class="filters-section" aria-label="Filtros de Xuxemons">
-    <h2 class="sr-only">Filtros disponibles</h2>
-
-      <div class="search-box">
-      <label for="searchXuxemon" class="sr-only">Buscar por nombre</label>
+  <section class="filters-section">
+    <div class="search-box">
       <input 
-        id="searchXuxemon"
         type="text" 
         placeholder="Buscar Xuxemon por nombre..."
         [(ngModel)]="searchTerm"
         (input)="filterXuxemons()"
-        aria-label="Buscar Xuxemon por nombre"
       >
     </div>
+
     <fieldset class="filter-group">
       <legend>Filtrar por tipo:</legend>
       <div class="filter-buttons">
@@ -67,90 +35,82 @@
           <button 
             [class.active]="selectedType === type"
             (click)="filterByType(type)"
-            [attr.aria-pressed]="selectedType === type"
           >
             {{ type === 'todos' ? 'Todos' : type }}
           </button>
         }
       </div>
     </fieldset>
-    </section>
-    @if (loading) {
-      <div class="loading" role="status" aria-live="polite">
-        Cargando Xuxemons...
-      </div>
-    }
 
-      @if (error) {
-    <div class="error" role="alert">
-      {{ error }}
-      <button (click)="loadXuxemons()">Reintentar</button>
+    <fieldset class="filter-group">
+      <legend>Filtrar por tamaño:</legend>
+      <div class="filter-buttons">
+        @for (size of ['todas', 'Pequeño', 'Mediano', 'Grande']; track size) {
+          <button 
+            [class.active]="selectedSize === size"
+            (click)="filterBySize(size)"
+          >
+            {{ size === 'todas' ? 'Todas' : size }}
+          </button>
+        }
+      </div>
+    </fieldset>
+  </section>
+
+  @if (loading) {
+    <div class="loading">
+      Cargando Xuxemons...
     </div>
   }
 
-   @if (!loading && !error && filteredXuxemons.length === 0) {
+  @if (error) {
+    <div class="error">
+      {{ error }}
+      <button (click)="ngOnInit()">Reintentar</button>
+    </div>
+  }
+
+  @if (!loading && !error && filteredXuxemons.length === 0) {
     <div class="no-results">
       <p>No se encuentran Xuxemons con estos filtros</p>
-      @if (!isAdmin) {
-        <p>Prueba con otra búsqueda</p>
-      }
     </div>
   }
-   @if (!loading && !error && filteredXuxemons.length > 0) {
-    <section class="xuxedex-section" aria-labelledby="xuxemons-collection">
-      <h2 id="xuxemons-collection" class="sr-only">Colección de Xuxemons</h2>
-      
+
+  @if (!loading && !error && filteredXuxemons.length > 0) {
+    <section class="xuxedex-section">
       <div class="xuxemons-grid">
         @for (xuxemon of filteredXuxemons; track xuxemon.id) {
-          
           <article class="xuxemon-card" (click)="viewDetails(xuxemon)">
-
             <header class="card-header" [style.background]="getTypeColor(xuxemon.type)">
               <span class="xuxemon-type-badge">{{ xuxemon.type }}</span>
               <span class="xuxemon-level">Nv. {{ xuxemon.level }}</span>
             </header>
             
-      <div class="card-image">
+            <div class="card-image">
               <div class="image-placeholder" [style.background]="getTypeGradient(xuxemon.type)">
-                <span class="xuxemon-icon" aria-hidden="true">✨</span>
+                <span class="xuxemon-icon">✨</span>
               </div>
             </div>
-          
-            <div class="card-body">
             
+            <div class="card-body">
               <h2 class="xuxemon-name">{{ xuxemon.name }}</h2>
               
               <div class="badges-container">
                 <span class="badge badge-type" 
-                      [style.background]="getTypeColor(xuxemon.type)"
-                      [attr.aria-label]="'Tipo: ' + xuxemon.type">
+                      [style.background]="getTypeColor(xuxemon.type)">
                   {{ xuxemon.type }}
                 </span>
-                <span class="badge badge-size" 
-                      [attr.aria-label]="'Tamaño: ' + getSizeText(xuxemon.size)">
+                <span class="badge badge-size">
                   {{ getSizeText(xuxemon.size) }}
                 </span>
               </div>
-              
-             
-              <div class="xuxemon-stats">
-                <div class="stat">
-                  <span class="stat-label">Ataque</span>
-                  <span class="stat-value">{{ xuxemon.attack }}</span>
-                </div>
-                <div class="stat">
-                  <span class="stat-label">Defensa</span>
-                  <span class="stat-value">{{ xuxemon.defense }}</span>
-                </div>
-              </div>
             </div>
-              <footer class="card-footer">
-         
+            
+            <footer class="card-footer">
               <button 
                 class="btn-evolve" 
                 (click)="evolveSize(xuxemon, $event)" 
                 [disabled]="xuxemon.size === 'Grande'"
-                [attr.aria-label]="'Evolucionar ' + xuxemon.name + ' de tamaño ' + getSizeText(xuxemon.size)"
               >
                 @if (xuxemon.size === 'Pequeño') {
                   Evolucionar a Mediano
@@ -160,7 +120,8 @@
                   Tamaño máximo
                 }
               </button>
-               <span class="capture-status" [class.captured]="xuxemon.captured">
+              
+              <span class="capture-status" [class.captured]="xuxemon.captured">
                 @if (xuxemon.captured) {
                   ✓ Capturado
                 } @else {
