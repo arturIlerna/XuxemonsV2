@@ -48,7 +48,7 @@
   }
    <section class="filters-section" aria-label="Filtros de Xuxemons">
     <h2 class="sr-only">Filtros disponibles</h2>
-    
+
       <div class="search-box">
       <label for="searchXuxemon" class="sr-only">Buscar por nombre</label>
       <input 
@@ -60,3 +60,17 @@
         aria-label="Buscar Xuxemon por nombre"
       >
     </div>
+    <fieldset class="filter-group">
+      <legend>Filtrar por tipo:</legend>
+      <div class="filter-buttons">
+        @for (type of ['todos', 'Agua', 'Tierra', 'Aire']; track type) {
+          <button 
+            [class.active]="selectedType === type"
+            (click)="filterByType(type)"
+            [attr.aria-pressed]="selectedType === type"
+          >
+            {{ type === 'todos' ? 'Todos' : type }}
+          </button>
+        }
+      </div>
+    </fieldset>
