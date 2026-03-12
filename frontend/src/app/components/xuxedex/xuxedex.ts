@@ -49,5 +49,22 @@ export class Xuxedex implements OnInit {
       this.loadUsers();
     }
   }
+    loadXuxemons() {
+    this.loading = true;
+    this.error = '';
+    
+    this.xuxedexService.getMyXuxemons().subscribe({
+      next: (data) => {
+        this.allXuxemons = data;
+        this.filteredXuxemons = data;
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Error cargando Xuxemons:', err);
+        this.error = 'No se pudieron cargar los Xuxemons';
+        this.loading = false;
+      }
+    });
+  }
   }
 
