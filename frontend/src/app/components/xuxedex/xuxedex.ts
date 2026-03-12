@@ -32,7 +32,11 @@ export class Xuxedex implements OnInit {
   loading: boolean = false;
   error: string = '';
 
-
+  constructor(
+    private authService: Auth,
+    private router: Router,
+    private xuxedexService: XuxedexService
+  ) {}
 
   }
 
