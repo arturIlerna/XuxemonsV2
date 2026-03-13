@@ -16,11 +16,14 @@ export class Dashboard implements OnInit {
 
   // Se ejecuta nada más cargar la página
   ngOnInit() {
-    const userString = localStorage.getItem('user');
-    if (userString) {
-      const user = JSON.parse(userString);
-      this.userName = user.name; // Cogemos nombre del usuario
-    }
+    // Nos "suscribimos" a la emision del AuthService
+    this.authService.currentUser$.subscribe(user => {
+      if (user) {
+        this.userName = user.name; // Cogemos nombre del usuario en tiempo real
+      } else {
+        this.userName = '';
+      }
+    });
   }
 
   onLogout() {

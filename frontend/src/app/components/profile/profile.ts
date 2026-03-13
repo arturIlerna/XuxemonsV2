@@ -25,22 +25,23 @@ export class Profile implements OnInit {
     this.profileForm = this.fb.group({
       name: ['', Validators.required],
       lastname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]], // Obligatorio y formato email real
-      password: ['', [Validators.minLength(6)]] // Opcional, pero si se rellena, mínimo 6 letras
+      email: ['', [Validators.required, Validators.email]], 
+      password: ['', [Validators.minLength(6)]] 
     });
 
-    // Cogemos los datos del usuario y los metemos al formulario
-    const userString = localStorage.getItem('user');
-    if (userString) {
-      this.user = JSON.parse(userString);
-      
-      // patchValue rellena los inputs automáticamente con los datos de la BD
-      this.profileForm.patchValue({
-        name: this.user.name,
-        lastname: this.user.lastname || '', 
-        email: this.user.email
-      });
-    }
+    // Nos suscribimos al BehaviorSubjec
+    this.authService.currentUser$.subscribe(user => {
+      if (user) {
+        this.user = user;
+        
+        // patchValue rellena los inputs automáticamente
+        this.profileForm.patchValue({
+          name: this.user.name,
+          lastname: this.user.lastname || '', 
+          email: this.user.email
+        });
+      }
+    });
   }
 
   // Función para guardar los cambios

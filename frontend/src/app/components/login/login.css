@@ -1,15 +1,71 @@
-.login-container {
-  max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
-  text-align: center;
-  font-family: sans-serif;
+/* =========================================
+   NUEVO: RESET GLOBAL PARA FULLSCREEN TOTAL
+   ========================================= */
+html, body {
+  margin: 0; /* Quitamos el margen por defecto del navegador */
+  padding: 0; /* Quitamos el relleno por defecto */
+  height: 100%; /* Aseguramos que ocupe todo el alto */
+  width: 100%; /* Aseguramos que ocupe todo el ancho */
 }
 
+/* =========================================
+   FONDO DE PANTALLA COMPLETA
+   ========================================= */
+.background-wrapper {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Aquí usamos tu nombre exacto de imagen */
+  background-image: url('/images/login-registro.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.15); /* Oscurece un poco el fondo */
+}
+
+/* =========================================
+   EFECTO CRISTAL MANTENIDO (35% TRASLÚCIDO)
+   ========================================= */
+.login-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+  font-family: sans-serif;
+  
+  /* Mantengo el fondo muy transparente (35%) y el borde fino */
+  background-color: rgba(255, 255, 255, 0.35); 
+  backdrop-filter: blur(10px); 
+  border-radius: 12px;
+  
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+  border: 1px solid rgba(255, 255, 255, 0.2); 
+}
+
+.login-link {
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.login-link a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   ESTILOS DEL TOKEN
+   ========================================= */
 .token-success {
   margin-top: 20px;
   padding: 15px;
-  background-color: #f0fdf4;
+  background-color: rgba(240, 253, 244, 0.8);
   border: 1px solid #bbf7d0;
   border-radius: 8px;
 }
@@ -18,4 +74,98 @@
   word-break: break-all;
   color: #16a34a; 
   font-family: monospace;
+}
+
+/* =========================================
+   ESTILOS DE INPUTS Y BOTÓN
+   ========================================= */
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+/* =========================================
+   ANIMACIÓN DE CARGA (SPINNER)
+   ========================================= */
+button:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================
+   VALIDACIONES DE ANGULAR Y ERRORES
+   ========================================= */
+input.ng-invalid.ng-touched {
+  border: 2px solid #ff4444;
+  background-color: rgba(255, 240, 240, 0.8);
+  outline: none;
+}
+
+input.ng-valid.ng-touched {
+  border: 2px solid #00C851;
+}
+
+.error-msg small {
+  color: #ff4444;
+  font-size: 0.85rem;
+  font-weight: bold;
+  display: block;
+  margin-top: 4px;
+  text-align: left;
+}
+
+.backend-error small {
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN MANTENIDO (MÓVILES)
+   ========================================= */
+@media (max-width: 576px) {
+  .login-container {
+    padding: 20px;
+    max-width: 90%;
+    margin: 0 15px;
+  }
 }
