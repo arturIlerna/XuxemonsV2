@@ -1,0 +1,45 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <a routerLink="/dashboard" class="nav-brand">Xuxemons</a>
+    <ul class="nav-menu">
+      <li><a routerLink="/xuxedex" routerLinkActive="active">Xuxedex</a></li>
+      <li><a routerLink="/inventory" routerLinkActive="active">Mochila</a></li>
+    </ul>
+    <div class="nav-user">
+      <span>{{ userName }}</span>
+      <button (click)="logout()" class="btn-logout">Cerrar sesión</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <header class="page-header">
+    <h1>Mi Mochila</h1>
+  </header>
+
+  <section class="inventory-section">
+    <div class="inventory-grid">
+      @for (slot of slots; track slot.id) {
+        <article 
+          class="slot-card" 
+          [ngClass]="{'is-empty': !slot.item, 'is-full': slot.item}">
+          
+          @if (slot.item) {
+            <div class="item-content">
+              <span class="item-icon">{{ slot.item.icon }}</span>
+              <span class="item-name">{{ slot.item.name }}</span>
+              
+              @if (slot.item.type === 'xuxe' && slot.quantity > 0) {
+                <span class="item-badge">x{{ slot.quantity }}</span>
+              }
+            </div>
+          } @else {
+            <div class="empty-content">
+              <span>Vacío</span>
+            </div>
+          }
+        </article>
+      }
+    </div>
+  </section>
+</main>
