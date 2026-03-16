@@ -84,4 +84,9 @@ export class Auth {
       })
     );
   }
+  
+  // Función para pedirle al backend todos los usuarios registrados
+  getAllUsers(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/users`);
+  }
 }
