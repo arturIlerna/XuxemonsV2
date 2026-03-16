@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core'; // cdr para mostrar definitivamente los puñeteros usuarios :)
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Auth } from '../../services/auth'; 
@@ -10,7 +10,7 @@ export interface UserData {
   lastname: string; 
   email: string;
   role: string;
-  xuxe_id: string; // 👈 Laravel te guarda el ID visual aquí
+  xuxe_id: string; 
 }
 
 @Component({
@@ -24,16 +24,34 @@ export class Admin implements OnInit {
   
   users: UserData[] = [];
 
-  constructor(private router: Router, private authService: Auth) {} // Inyectamos authService
+  // Añadimos el cdr (porque no mostraba la puñetera lista de usuarios y con esto actualizamos de nuevo) al constructor y el auth
+  constructor(
+    private router: Router, 
+    private authService: Auth,
+    private cdr: ChangeDetectorRef 
+  ) {}
   
   ngOnInit() {
-    // Le pedimos a Laravel la lista de usuarios
     this.authService.getAllUsers().subscribe({
-      next: (data) => {
-        this.users = data; // Guardamos los usuarios
+      next: (data: any) => {
+        // Tu filtro actual...
+        if (Array.isArray(data)) {
+          this.users = data;
+        } else if (data && data.data) {
+          this.users = data.data;
+        } else if (data && data.users) {
+          this.users = data.users;
+        } else {
+          this.users = Object.values(data); 
+        }
+
+        console.log('✅ ARRAY FINAL PARA EL HTML:', this.users);
+
+        // Obligamos a Angular a pintar la santa tabla de usuarios
+        this.cdr.detectChanges(); 
       },
       error: (err) => {
-        console.error('Error al cargar usuarios:', err);
+        console.error('❌ Error al cargar usuarios:', err);
       }
     });
   }
