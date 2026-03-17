@@ -1,42 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Auth } from '../../services/auth';
-
-interface Xuxemon {
-  id: number;
-  name: string;
-  type: 'Agua' | 'Tierra' | 'Aire';
-  size: 'Pequeño' | 'Mediano' | 'Grande';
-  level: number;
-  attack: number;
-  defense: number;
-  captured: boolean;
-}
+// 👇 Importamos el nuevo servicio y la interfaz
+import { XuxemonsService, Xuxemon } from '../../services/xuxemons.service'; 
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-xuxedex',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink], // Añadido RouterLink por seguridad para la navbar
   templateUrl: './xuxedex.html',
   styleUrl: './xuxedex.css'
 })
-export class Xuxedex implements OnInit {
+export class Xuxedex implements OnInit, OnDestroy {
   
   userName: string = '';
-  
-  // Datos quemados para prueba (sin backend)
-  allXuxemons: Xuxemon[] = [
-    { id: 1, name: 'Floppi', type: 'Tierra', size: 'Pequeño', level: 5, attack: 40, defense: 50, captured: true },
-    { id: 2, name: 'Charmander', type: 'Aire', size: 'Mediano', level: 18, attack: 70, defense: 45, captured: true },
-    { id: 3, name: 'Squirtle', type: 'Agua', size: 'Pequeño', level: 10, attack: 45, defense: 60, captured: false },
-    { id: 4, name: 'Bulbasaur', type: 'Tierra', size: 'Mediano', level: 20, attack: 60, defense: 65, captured: true },
-    { id: 5, name: 'Pikachu', type: 'Aire', size: 'Pequeño', level: 8, attack: 55, defense: 40, captured: false },
-    { id: 6, name: 'Geodude', type: 'Tierra', size: 'Pequeño', level: 15, attack: 50, defense: 75, captured: true },
-    { id: 7, name: 'Charmander', type: 'Aire', size: 'Pequeño', level: 7, attack: 45, defense: 35, captured: true },
-  ];
-
+  allXuxemons: Xuxemon[] = []; // Ahora empieza vacío
   filteredXuxemons: Xuxemon[] = [];
   
   searchTerm: string = '';
@@ -46,21 +27,43 @@ export class Xuxedex implements OnInit {
   loading: boolean = false;
   error: string = '';
 
+  // Variables para guardar las suscripciones y no saturar la memoria
+  private authSub!: Subscription;
+  private xuxeSub!: Subscription;
+
   constructor(
     private authService: Auth,
+    private xuxemonsService: XuxemonsService, // Inyectamos el servicio
     private router: Router
-  ) {
-    const user = this.authService.getUser();
-    this.userName = user?.name || 'Entrenador';
-  }
+  ) {}
 
   ngOnInit() {
-    this.filteredXuxemons = [...this.allXuxemons];
+    // 1. Escuchamos al usuario de forma segura (sin que pete si hay F5)
+    this.authSub = this.authService.currentUser$.subscribe(user => {
+      if (user && user.name) {
+        this.userName = user.name;
+      } else {
+        this.userName = 'Entrenador';
+      }
+    });
+
+    // 2. Escuchamos a la radio de Xuxemons
+    this.xuxeSub = this.xuxemonsService.xuxemons$.subscribe(data => {
+      this.allXuxemons = data;
+      this.filterXuxemons(); // Aplicamos los filtros al recibir los datos
+    });
   }
+
+  ngOnDestroy() {
+    // Cuando el usuario sale de la Xuxedex, apagamos las radios para no gastar memoria
+    if (this.authSub) this.authSub.unsubscribe();
+    if (this.xuxeSub) this.xuxeSub.unsubscribe();
+  }
+
+  // --- El resto de funciones se quedan EXACTAMENTE igual que las tenías ---
 
   evolveSize(xuxemon: Xuxemon, event: Event) {
     event.stopPropagation();
-    
     if (xuxemon.size === 'Pequeño') {
       xuxemon.size = 'Mediano';
       xuxemon.attack += 20;
@@ -78,12 +81,10 @@ export class Xuxedex implements OnInit {
 
   filterXuxemons() {
     const searchLower = this.searchTerm.toLowerCase();
-    
     this.filteredXuxemons = this.allXuxemons.filter(xuxemon => {
       const matchesSearch = xuxemon.name.toLowerCase().includes(searchLower);
       const matchesType = this.selectedType === 'todos' || xuxemon.type === this.selectedType;
       const matchesSize = this.selectedSize === 'todas' || xuxemon.size === this.selectedSize;
-      
       return matchesSearch && matchesType && matchesSize;
     });
   }

@@ -29,6 +29,17 @@ Route::middleware(['auth:api'])->group(function () {
         ]);
     });
 
+    // Dashboard de bienvenida
+    Route::get('/dashboard', function () {
+        return response()->json([
+            'message' => 'Bienvenido al dashboard de Xuxedex',
+            'user' => auth()->user()
+        ]);
+    });
+
+    // Obtener todos los usuarios (Para panel de admin)
+    Route::get('/users', [AuthController::class, 'index']);
+
 });
 
 // Ruta de comprobación rápida

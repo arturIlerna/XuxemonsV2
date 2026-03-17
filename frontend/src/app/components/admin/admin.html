@@ -1,0 +1,33 @@
+<table class="users-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre / ID Visual</th>
+            <th>Apellidos</th> <th>Email</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of users; track user.id) {
+            <tr>
+              <td>{{ user.id }}</td>
+              <td><strong>{{ user.xuxe_id || user.name }}</strong></td>
+              <td>{{ user.lastname }}</td> <td>{{ user.email }}</td>
+              <td>
+                <span class="role-badge" [class.admin-role]="user.role === 'admin'">
+                  {{ user.role }}
+                </span>
+              </td>
+              <td>
+                <button class="btn-action">Dar Xuxes</button>
+                <button class="btn-action">Dar Xuxemon</button>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="6" style="text-align: center;">No hay usuarios registrados.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
