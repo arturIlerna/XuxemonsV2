@@ -1,282 +1,144 @@
-/* =========================================
-   CONTENEDOR PRINCIPAL
-   ========================================= */
+/* ===== PROFILE COMPONENT ===== */
 .profile-container {
   min-height: 100vh;
-  background-color: #E6F0FA;  /* Fondo celeste muy clarito */
+  background-color: #E6F0FA;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 2rem;
 }
 
-/* =========================================
-   TARJETA DE PERFIL
-   ========================================= */
 .profile-card {
   max-width: 500px;
   width: 100%;
-  background-color: #FFFFFF;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-}
-
-/* =========================================
-   HEADER
-   ========================================= */
-.profile-header {
-  text-align: center;
-  margin-bottom: 30px;
 }
 
 .avatar {
   width: 80px;
   height: 80px;
-  background-color: #4A90E2;  /* Celeste sólido */
+  background-color: var(--celeste);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 15px;
-  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+  margin: 0 auto 1rem;
 }
 
 .avatar span {
-  font-size: 40px;
-  color: #FFFFFF;
+  font-size: 2rem;
+  color: var(--blanco);
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .profile-header h2 {
-  color: #1A2B3C;  /* Azul oscuro */
-  font-size: 24px;
-  margin-bottom: 5px;
-  font-weight: 700;
+  color: var(--texto-oscuro);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .text-muted {
-  color: #4A90E2;  /* Celeste */
-  font-size: 14px;
+  color: var(--celeste);
   font-weight: 600;
 }
 
-/* =========================================
-   FORMULARIO
-   ========================================= */
-.profile-form {
-  margin-bottom: 20px;
-}
-
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
-  color: #1A2B3C;  /* Azul oscuro */
+  margin-bottom: 0.5rem;
+  color: var(--texto-oscuro);
   font-weight: 600;
-  font-size: 14px;
 }
 
 .form-group input {
   width: 100%;
-  padding: 12px;
-  border: 2px solid #CBD5E0;
+  padding: 0.75rem;
+  border: 2px solid var(--borde);
   border-radius: 8px;
-  font-size: 14px;
-  transition: all 0.2s;
-  box-sizing: border-box;
-  color: #1A2B3C;
-  font-weight: 500;
-  background-color: #FFFFFF;
+  font-size: 1rem;
+  color: var(--texto-oscuro);
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #4A90E2;  /* Celeste */
-  background-color: #F7FAFC;
-}
-
-.form-group input.error {
-  border-color: #E53E3E;  /* Rojo */
-  background-color: #FFF5F5;
+  border-color: var(--celeste);
 }
 
 .optional {
-  color: #718096;
-  font-size: 12px;
-  font-weight: 500;
-  margin-left: 5px;
+  color: var(--gris);
+  font-size: 0.85rem;
+  margin-left: 0.5rem;
 }
 
-.error-text {
-  display: block;
-  color: #E53E3E;  /* Rojo */
-  font-size: 12px;
-  margin-top: 5px;
-  font-weight: 600;
-}
-
-/* =========================================
-   BOTONES
-   ========================================= */
 .btn-save {
   width: 100%;
-  padding: 14px;
-  background-color: #48BB78;  /* Verde sólido */
-  color: #FFFFFF;
+  padding: 1rem;
+  background-color: var(--verde);
+  color: var(--blanco);
   border: none;
   border-radius: 8px;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  margin: 1rem 0;
 }
 
 .btn-save:hover:not(:disabled) {
-  background-color: #38A169;  /* Verde más oscuro */
+  background-color: #38A169;
 }
 
 .btn-save:disabled {
   background-color: #9AE6B4;
-  color: #1A2B3C;
+  color: var(--texto-oscuro);
   cursor: not-allowed;
 }
 
-/* =========================================
-   ACCIONES
-   ========================================= */
 .profile-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #E2E8F0;
-}
-
-.btn-back, .btn-danger {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  text-decoration: none;
-  text-align: center;
-}
-
-.btn-back {
-  background-color: #718096;  /* Gris */
-  color: #FFFFFF;
-}
-
-.btn-back:hover {
-  background-color: #4A5568;  /* Gris más oscuro */
-}
-
-.btn-danger {
-  background-color: #E53E3E;  /* Rojo */
-  color: #FFFFFF;
-}
-
-.btn-danger:hover {
-  background-color: #C53030;  /* Rojo más oscuro */
-}
-
-/* =========================================
-   MODAL DE CONFIRMACIÓN
-   ========================================= */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background-color: #FFFFFF;
-  padding: 2rem;
-  border-radius: 12px;
-  max-width: 400px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-
-.modal-content h3 {
-  color: #E53E3E;  /* Rojo */
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-}
-
-.modal-content p {
-  color: #1A2B3C;
-  margin-bottom: 2rem;
-  font-weight: 500;
-}
-
-.modal-actions {
   display: flex;
   gap: 1rem;
 }
 
-.btn-confirm {
+.btn-back, .btn-danger {
   flex: 1;
-  background-color: #E53E3E;  /* Rojo */
-  color: #FFFFFF;
+  padding: 0.75rem;
   border: none;
-  padding: 1rem;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-}
-
-.btn-cancel-modal {
-  flex: 1;
-  background-color: #718096;  /* Gris */
-  color: #FFFFFF;
-  border: none;
-  padding: 1rem;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-/* =========================================
-   LOADING
-   ========================================= */
-.loading {
   text-align: center;
-  padding: 40px;
-  color: #1A2B3C;
-  font-size: 1.2rem;
-  font-weight: 600;
+  text-decoration: none;
 }
 
-/* =========================================
-   RESPONSIVE
-   ========================================= */
+.btn-back {
+  background-color: var(--gris);
+  color: var(--blanco);
+}
+
+.btn-back:hover {
+  background-color: #4A5568;
+}
+
+.btn-danger {
+  background-color: var(--rojo);
+  color: var(--blanco);
+}
+
+.btn-danger:hover {
+  background-color: #C53030;
+}
+
 @media (max-width: 480px) {
   .profile-card {
-    padding: 20px;
+    padding: 1.5rem;
   }
-
+  
   .profile-actions {
     flex-direction: column;
-  }
-
-  .profile-header h2 {
-    font-size: 20px;
   }
 }

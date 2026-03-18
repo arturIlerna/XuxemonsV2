@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+/* ===== ESTILOS GLOBALES ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #E6F0FA;
+  min-height: 100vh;
+}
+
+:root {
+  --celeste: #4A90E2;
+  --celeste-oscuro: #2C5282;
+  --texto-oscuro: #1A2B3C;
+  --blanco: #FFFFFF;
+  --verde: #48BB78;
+  --rojo: #E53E3E;
+  --naranja: #ED8936;
+  --gris-claro: #F7FAFC;
+  --gris: #718096;
+  --borde: #E2E8F0;
+}
+
+/* ===== CONTENEDOR PRINCIPAL UNIFICADO ===== */
+.contenedor-principal {
+  background-color: var(--blanco);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  min-height: 600px;
+  height: auto;
+  width: 100%;
+}

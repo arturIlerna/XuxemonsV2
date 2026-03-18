@@ -1,49 +1,46 @@
-/* =========================================
-   MOCHILA COMPONENT - ESTILOS UNIFICADOS
-   ========================================= */
-
-/* Navbar (mismos estilos que xuxedex) */
-.navbar { 
-  background-color: #4A90E2;  /* Celeste sólido */
-  padding: 1rem 2rem; 
+/* ===== MOCHILA COMPONENT ===== */
+.mochila-wrapper {
+  min-height: 100vh;
+  background-color: #E6F0FA;
 }
 
-.nav-container { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  max-width: 1200px; 
-  margin: 0 auto; 
+.navbar {
+  background-color: var(--celeste);
+  padding: 1rem 2rem;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-brand {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #FFFFFF;
+  color: var(--blanco);
   text-decoration: none;
 }
 
-.nav-menu { 
-  list-style: none; 
-  display: flex; 
-  gap: 20px; 
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
 }
 
-.nav-menu a { 
-  color: #FFFFFF; 
-  text-decoration: none; 
+.nav-menu a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: 600;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  font-weight: 600;
-  transition: background-color 0.3s;
 }
 
-.nav-menu a:hover {
-  background-color: #2C5282;  /* Celeste oscuro */
-}
-
+.nav-menu a:hover,
 .nav-menu a.active {
-  background-color: #2C5282;  /* Celeste oscuro */
+  background-color: var(--celeste-oscuro);
 }
 
 .nav-user {
@@ -53,63 +50,55 @@
 }
 
 .username {
-  color: #FFFFFF;
+  color: var(--blanco);
   font-weight: 600;
 }
 
-.btn-logout { 
-  background-color: #E53E3E;  /* Rojo sólido */
-  color: #FFFFFF; 
-  border: none; 
-  padding: 0.5rem 1.5rem; 
-  cursor: pointer; 
+.btn-logout {
+  background-color: var(--rojo);
+  color: var(--blanco);
+  border: none;
+  padding: 0.5rem 1.5rem;
   border-radius: 20px;
+  cursor: pointer;
   font-weight: 600;
-  transition: background-color 0.3s;
 }
 
 .btn-logout:hover {
-  background-color: #C53030;  /* Rojo más oscuro */
+  background-color: #C53030;
 }
 
-/* Page Header */
-.page-header { 
-  text-align: center; 
-  margin: 2rem 0; 
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .page-header h1 {
-  color: #1A2B3C;  /* Azul oscuro */
+  color: var(--texto-oscuro);
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
 .page-header p {
-  color: #4A90E2;  /* Celeste */
+  color: var(--celeste);
   font-size: 1.1rem;
 }
 
-/* Inventory Section */
-.inventory-section {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #FFFFFF;  /* Blanco */
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-}
-
-/* Grid de la mochila */
 .inventory-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
+  gap: 1rem;
 }
 
-/* Slots */
 .slot-card {
-  background-color: #F7FAFC;  /* Gris muy clarito */
-  border: 2px solid #E2E8F0;
+  background-color: var(--gris-claro);
+  border: 2px solid var(--borde);
   border-radius: 10px;
   height: 120px;
   display: flex;
@@ -119,14 +108,13 @@
   transition: all 0.2s;
 }
 
-/* Diferenciación visual */
 .slot-card.is-empty {
-  border: 2px dashed #CBD5E0;
-  background-color: #F7FAFC;
+  border: 2px dashed var(--borde);
+  background-color: var(--blanco);
 }
 
 .slot-card.is-full {
-  border: 2px solid #48BB78;  /* Verde */
+  border: 2px solid var(--verde);
   background-color: #F0FFF4;
 }
 
@@ -135,66 +123,53 @@
   box-shadow: 0 8px 16px rgba(74, 144, 226, 0.2);
 }
 
-/* Contenido del item */
 .item-content {
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .item-icon {
-  font-size: 2.5rem;
-  margin-bottom: 5px;
-  color: #4A90E2;  /* Celeste */
+  font-size: 2rem;
+  color: var(--celeste);
+  margin-bottom: 0.25rem;
 }
 
 .item-name {
-  color: #1A2B3C;  /* Azul oscuro */
   font-size: 0.8rem;
+  color: var(--texto-oscuro);
   font-weight: 600;
 }
 
 .empty-content {
-  color: #A0AEC0;
-  font-size: 0.9rem;
-  font-weight: 500;
+  color: var(--gris);
+  font-size: 0.8rem;
 }
 
-/* Badge del item */
 .item-badge {
   position: absolute;
   bottom: 5px;
   right: 5px;
-  background-color: #ED8936;  /* Naranja sólido */
-  color: #FFFFFF;
+  background-color: var(--naranja);
+  color: var(--blanco);
   padding: 2px 6px;
   border-radius: 12px;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 600;
 }
 
-/* Estados */
 .loading {
   text-align: center;
-  padding: 3rem;
-  color: #1A2B3C;
-  font-size: 1.2rem;
-  font-weight: 500;
+  padding: 2rem;
+  color: var(--texto-oscuro);
 }
 
 .error {
-  background-color: #E53E3E;  /* Rojo */
-  color: #FFFFFF;
+  background-color: var(--rojo);
+  color: var(--blanco);
   padding: 1rem;
   border-radius: 8px;
-  margin: 1rem auto;
-  max-width: 800px;
   text-align: center;
-  font-weight: 600;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
@@ -204,18 +179,9 @@
   .nav-menu {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;
   }
   
   .inventory-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .inventory-section {
-    padding: 10px;
-  }
-  
-  .page-header h1 {
-    font-size: 1.5rem;
   }
 }
