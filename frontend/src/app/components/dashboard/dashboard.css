@@ -9,8 +9,7 @@
 
 .dashboard-wrapper {
   min-height: 100vh;
-  background: linear-gradient(135deg, #a8c0ff 0%, #8ec5fc 100%);
-  /* Gradiente más claro: azul muy suave */
+  background-color: #E6F0FA;  /* Fondo celeste muy clarito */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -18,10 +17,8 @@
    HEADER SUPERIOR
    ========================================= */
 .dashboard-header {
-  background-color: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
+  background-color: #4A90E2;  /* Celeste sólido */
   padding: 1rem 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .header-content {
@@ -33,11 +30,9 @@
 }
 
 .logo-section h1 {
-  color: #2c3e50;
-  /* Azul oscuro para mejor contraste */
+  color: #FFFFFF;  /* Blanco */
   font-size: 1.8rem;
   font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
   letter-spacing: 2px;
 }
 
@@ -48,30 +43,27 @@
 }
 
 .username {
-  color: #2c3e50;
+  color: #FFFFFF;  /* Blanco */
   font-size: 1.1rem;
   font-weight: 600;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: #2C5282;  /* Celeste oscuro */
   padding: 8px 16px;
   border-radius: 20px;
 }
 
 .btn-logout {
-  background-color: rgba(231, 76, 60, 0.4);
-  color: #c0392b;
-  border: 1px solid rgba(192, 57, 43, 0.3);
+  background-color: #E53E3E;  /* Rojo sólido */
+  color: #FFFFFF;
+  border: none;
   padding: 8px 20px;
   border-radius: 20px;
   cursor: pointer;
   font-weight: 700;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s;
+  transition: background-color 0.3s;
 }
 
 .btn-logout:hover {
-  background-color: rgba(231, 76, 60, 0.7);
-  color: white;
-  transform: translateY(-2px);
+  background-color: #C53030;  /* Rojo más oscuro */
 }
 
 /* =========================================
@@ -90,11 +82,9 @@
    SIDEBAR - MENÚ DE NAVEGACIÓN
    ========================================= */
 .sidebar {
-  background-color: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
+  background-color: #FFFFFF;  /* Blanco */
   border-radius: 20px;
   padding: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
   height: fit-content;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
@@ -110,7 +100,7 @@
   align-items: center;
   gap: 12px;
   padding: 12px 16px;
-  color: #2c3e50;
+  color: #1A2B3C;  /* Azul oscuro */
   text-decoration: none;
   border-radius: 12px;
   transition: all 0.3s;
@@ -119,15 +109,14 @@
 }
 
 .nav-item:hover {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: #E6F0FA;  /* Celeste muy clarito */
   transform: translateX(5px);
-  color: #1a2634;
+  color: #4A90E2;  /* Celeste */
 }
 
 .nav-item.active {
-  background-color: rgba(52, 152, 219, 0.3);
-  border-left: 4px solid #3498db;
-  color: #1a2634;
+  background-color: #4A90E2;  /* Celeste sólido */
+  color: #FFFFFF;
   font-weight: 600;
 }
 
@@ -139,11 +128,9 @@
    ÁREA DE CONTENIDO
    ========================================= */
 .content-area {
-  background-color: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px);
+  background-color: #FFFFFF;  /* Blanco */
   border-radius: 20px;
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -155,7 +142,7 @@
   gap: 2rem;
   margin-bottom: 2rem;
   padding: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #F7FAFC;
   border-radius: 15px;
 }
 
@@ -166,7 +153,7 @@
 }
 
 .stat-label {
-  color: #2c3e50;
+  color: #1A2B3C;
   font-size: 1rem;
   font-weight: 600;
 }
@@ -179,13 +166,13 @@
 }
 
 .stat-value.caramel {
-  background-color: rgba(243, 156, 18, 0.25);
-  color: #b16700;
+  background-color: #ED8936;  /* Naranja sólido */
+  color: #FFFFFF;
 }
 
 .stat-value.level {
-  background-color: rgba(46, 204, 113, 0.25);
-  color: #1e7e34;
+  background-color: #48BB78;  /* Verde sólido */
+  color: #FFFFFF;
 }
 
 /* =========================================
@@ -194,15 +181,14 @@
 .xuxemon-card {
   text-align: center;
   padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: #F7FAFC;
   border-radius: 20px;
 }
 
 .xuxemon-name {
-  color: #2c3e50;
+  color: #1A2B3C;
   font-size: 2.8rem;
   margin-bottom: 0.5rem;
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.3);
   font-weight: 700;
 }
 
@@ -214,15 +200,14 @@
   padding: 8px 30px;
   border-radius: 40px;
   font-weight: 600;
-  color: white;
+  color: #FFFFFF;
   font-size: 1rem;
   letter-spacing: 1px;
+  background-color: #4A90E2;  /* Celeste sólido */
 }
 
 .type-badge.ground {
-  background-color: #cd7b4a;
-  /* Marrón más claro */
-  box-shadow: 0 4px 10px rgba(205, 123, 74, 0.3);
+  background-color: #ED8936;  /* Naranja sólido */
 }
 
 .xuxemon-image {
@@ -234,19 +219,18 @@
 .image-placeholder {
   width: 200px;
   height: 200px;
-  background: linear-gradient(135deg, #f7d44c, #f5a623);
+  background-color: #ECC94B;  /* Amarillo sólido */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 30px rgba(247, 212, 76, 0.3);
-  border: 4px solid white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 4px solid #FFFFFF;
 }
 
 .image-placeholder span {
   font-size: 5rem;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #FFFFFF;
 }
 
 /* =========================================
@@ -257,7 +241,7 @@
 }
 
 .special-attack h3 {
-  color: #2c3e50;
+  color: #1A2B3C;
   font-size: 1.4rem;
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -266,19 +250,29 @@
 }
 
 .attack-card {
-  background: linear-gradient(135deg, #a8c0ff 0%, #8ec5fc 100%);
+  background-color: #4A90E2;  /* Celeste sólido */
   padding: 1.5rem;
   border-radius: 15px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .attack-name {
-  color: #2c3e50;
+  color: #FFFFFF;
   font-size: 1.3rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+/* =========================================
+   LOADING
+   ========================================= */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  color: #1A2B3C;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 /* =========================================

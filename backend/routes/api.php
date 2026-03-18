@@ -21,14 +21,7 @@ Route::middleware(['auth:api'])->group(function () {
     // Obtener mis datos de usuario logueado
     Route::get('/me', [AuthController::class, 'me']);
 
-    // Dashboard de bienvenida
-    Route::get('/dashboard', function () {
-        return response()->json([
-            'message' => 'Bienvenido al dashboard de Xuxedex',
-            'user' => auth()->user()
-        ]);
-    });
-
+  
     // Dashboard de bienvenida
     Route::get('/dashboard', function () {
         return response()->json([

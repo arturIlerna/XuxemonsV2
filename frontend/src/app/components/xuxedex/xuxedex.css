@@ -1,3 +1,4 @@
+/* ===== XUXEDEX COMPONENT ===== */
 * {
   margin: 0;
   padding: 0;
@@ -5,8 +6,7 @@
 }
 
 .navbar {
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background-color: #4A90E2;  /* Celeste sólido */
   padding: 1rem 2rem;
 }
 
@@ -21,7 +21,7 @@
 .nav-brand {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #333;
+  color: #FFFFFF;
   text-decoration: none;
 }
 
@@ -32,20 +32,19 @@
 }
 
 .nav-menu a {
-  color: #666;
+  color: #FFFFFF;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.5rem 1rem;
   border-radius: 4px;
 }
 
 .nav-menu a:hover {
-  background-color: #f0f0f0;
+  background-color: #2C5282;  /* Celeste oscuro */
 }
 
 .nav-menu a.active {
-  color: #2196f3;
-  background-color: #e3f2fd;
+  background-color: #2C5282;  /* Celeste oscuro */
 }
 
 .nav-user {
@@ -54,18 +53,23 @@
   gap: 1rem;
 }
 
+.username {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
 .btn-logout {
-  background-color: #f44336;
-  color: white;
+  background-color: #E53E3E;  /* Rojo sólido */
+  color: #FFFFFF;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .btn-logout:hover {
-  background-color: #d32f2f;
+  background-color: #C53030;  /* Rojo más oscuro */
 }
 
 main {
@@ -80,17 +84,18 @@ main {
 
 .page-header h1 {
   font-size: 2rem;
-  color: #333;
+  color: #1A2B3C;  /* Azul oscuro para texto */
   margin-bottom: 0.5rem;
 }
 
 .total-count {
-  color: #666;
+  color: #1A2B3C;
   font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .filters-section {
-  background-color: white;
+  background-color: #FFFFFF;
   border-radius: 8px;
   padding: 1.5rem;
   margin-bottom: 2rem;
@@ -104,14 +109,15 @@ main {
 .search-box input {
   width: 100%;
   padding: 0.75rem;
-  border: 2px solid #e0e0e0;
+  border: 2px solid #CBD5E0;
   border-radius: 8px;
   font-size: 1rem;
+  color: #1A2B3C;
 }
 
 .search-box input:focus {
   outline: none;
-  border-color: #2196f3;
+  border-color: #4A90E2;
 }
 
 .filter-group {
@@ -121,8 +127,8 @@ main {
 }
 
 .filter-group legend {
-  font-weight: 500;
-  color: #555;
+  font-weight: 600;
+  color: #1A2B3C;
   margin-bottom: 0.5rem;
 }
 
@@ -134,57 +140,62 @@ main {
 
 .filter-buttons button {
   padding: 0.5rem 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid #CBD5E0;
   border-radius: 20px;
-  background-color: white;
-  color: #666;
+  background-color: #FFFFFF;
+  color: #1A2B3C;
+  font-weight: 500;
   cursor: pointer;
 }
 
 .filter-buttons button:hover {
-  background-color: #e3f2fd;
-  border-color: #2196f3;
+  background-color: #E6F0FA;  /* Celeste muy clarito */
+  border-color: #4A90E2;
 }
 
 .filter-buttons button.active {
-  background-color: #2196f3;
-  color: white;
-  border-color: #2196f3;
+  background-color: #4A90E2;  /* Celeste sólido */
+  color: #FFFFFF;
+  border-color: #4A90E2;
 }
 
 .loading {
   text-align: center;
   padding: 3rem;
-  color: #666;
+  color: #1A2B3C;
   font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .error {
-  background-color: #ffebee;
-  color: #c62828;
+  background-color: #E53E3E;
+  color: #FFFFFF;
   padding: 1rem;
   border-radius: 8px;
   margin-bottom: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 500;
 }
 
 .error button {
-  background-color: #c62828;
-  color: white;
+  background-color: #FFFFFF;
+  color: #E53E3E;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .no-results {
   text-align: center;
   padding: 3rem;
-  background-color: white;
+  background-color: #FFFFFF;
   border-radius: 8px;
-  color: #666;
+  color: #1A2B3C;
+  font-weight: 500;
 }
 
 .xuxemons-grid {
@@ -208,7 +219,7 @@ main {
 }
 
 .xuxemon-card {
-  background-color: white;
+  background-color: #FFFFFF;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -227,19 +238,20 @@ main {
   padding: 0.75rem;
   display: flex;
   justify-content: space-between;
-  color: white;
-  font-weight: 500;
+  color: #FFFFFF;
+  font-weight: 600;
+  background-color: #4A90E2;  /* Celeste sólido */
 }
 
 .xuxemon-type-badge {
-  background-color: rgba(255,255,255,0.2);
+  background-color: #2C5282;  /* Celeste oscuro */
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.85rem;
 }
 
 .xuxemon-level {
-  background-color: rgba(0,0,0,0.2);
+  background-color: #2C5282;  /* Celeste oscuro */
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -249,7 +261,7 @@ main {
   padding: 1rem;
   display: flex;
   justify-content: center;
-  background-color: #f8f9fa;
+  background-color: #F7FAFC;
 }
 
 .image-placeholder {
@@ -259,9 +271,10 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #FFFFFF;
   font-size: 2rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: #4A90E2;  /* Celeste sólido */
 }
 
 .card-body {
@@ -272,9 +285,9 @@ main {
 
 .xuxemon-name {
   font-size: 1.2rem;
-  color: #333;
+  color: #1A2B3C;
   margin-bottom: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .badges-container {
@@ -289,16 +302,16 @@ main {
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.85rem;
-  font-weight: 500;
-  color: white;
+  font-weight: 600;
+  color: #FFFFFF;
 }
 
 .badge-type {
-  background-color: #2196f3;
+  background-color: #4A90E2;  /* Celeste sólido */
 }
 
 .badge-size {
-  background-color: #9c27b0;
+  background-color: #2C5282;  /* Celeste oscuro */
 }
 
 .xuxemon-stats {
@@ -316,55 +329,59 @@ main {
 
 .stat-label {
   font-size: 0.8rem;
-  color: #999;
+  color: #718096;
   margin-bottom: 0.25rem;
+  font-weight: 500;
 }
 
 .stat-value {
   font-size: 1.1rem;
-  font-weight: 600;
-  color: #333;
+  font-weight: 700;
+  color: #1A2B3C;
 }
 
 .card-footer {
   padding: 1rem;
-  background-color: #f8f9fa;
-  border-top: 1px solid #eee;
+  background-color: #F7FAFC;
+  border-top: 1px solid #E2E8F0;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 }
 
 .btn-evolve {
-  background-color: #ff9800;
-  color: white;
+  background-color: #48BB78;  /* Verde sólido */
+  color: #FFFFFF;
   border: none;
   padding: 0.5rem;
   border-radius: 20px;
   font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
   width: 100%;
 }
 
 .btn-evolve:hover:not(:disabled) {
-  background-color: #f57c00;
+  background-color: #38A169;  /* Verde más oscuro */
 }
 
 .btn-evolve:disabled {
-  background-color: #ffb74d;
+  background-color: #9AE6B4;
+  color: #1A2B3C;
   cursor: not-allowed;
 }
 
 .capture-status {
   text-align: center;
   font-size: 0.9rem;
-  color: #999;
+  color: #718096;
   padding: 0.25rem;
+  font-weight: 500;
 }
 
 .capture-status.captured {
-  color: #4caf50;
-  font-weight: 500;
+  color: #48BB78;
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
