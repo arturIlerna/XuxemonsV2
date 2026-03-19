@@ -60,8 +60,6 @@ export class Xuxedex implements OnInit, OnDestroy {
     if (this.xuxeSub) this.xuxeSub.unsubscribe();
   }
 
-  // --- El resto de funciones se quedan EXACTAMENTE igual que las tenías ---
-
   evolveSize(xuxemon: Xuxemon, event: Event) {
     event.stopPropagation();
     if (xuxemon.size === 'Pequeño') {

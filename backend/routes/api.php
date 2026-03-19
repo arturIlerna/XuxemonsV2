@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\XuxemonController;
 
 // RUTAS PÚBLICAS (No necesitan Token) ---
 Route::post('/register', [AuthController::class, 'register']);
@@ -39,6 +40,9 @@ Route::middleware(['auth:api'])->group(function () {
 
     // Obtener todos los usuarios (Para panel de admin)
     Route::get('/users', [AuthController::class, 'index']);
+
+    // Obtener catálogo global de Xuxemons
+    Route::get('/xuxemons', [XuxemonController::class, 'index']);
 
 });
 
