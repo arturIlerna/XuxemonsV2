@@ -81,27 +81,27 @@
       <div class="xuxemons-grid">
         @for (xuxemon of filteredXuxemons; track xuxemon.id) {
           <article class="xuxemon-card" (click)="viewDetails(xuxemon)">
-            <header class="card-header" [style.background]="getTypeColor(xuxemon.type)">
-              <span class="xuxemon-type-badge">{{ xuxemon.type }}</span>
-              <span class="xuxemon-level">Nv. {{ xuxemon.level }}</span>
+            <header class="card-header" [style.background]="getTypeColor(xuxemon.tipo)">
+              <span class="xuxemon-type-badge">{{ xuxemon.tipo }}</span>
+              <span class="xuxemon-level">Nv. {{ xuxemon.nivel }}</span>
             </header>
             
             <div class="card-image">
-              <div class="image-placeholder" [style.background]="getTypeGradient(xuxemon.type)">
+              <div class="image-placeholder" [style.background]="getTypeGradient(xuxemon.tipo)">
                 <span class="xuxemon-icon">✨</span>
               </div>
             </div>
             
             <div class="card-body">
-              <h2 class="xuxemon-name">{{ xuxemon.name }}</h2>
+              <h2 class="xuxemon-name">{{ xuxemon.nombre }}</h2>
               
               <div class="badges-container">
                 <span class="badge badge-type" 
-                      [style.background]="getTypeColor(xuxemon.type)">
-                  {{ xuxemon.type }}
+                      [style.background]="getTypeColor(xuxemon.tipo)">
+                  {{ xuxemon.tipo }}
                 </span>
                 <span class="badge badge-size">
-                  {{ getSizeText(xuxemon.size) }}
+                  {{ getSizeText(xuxemon.tamano) }}
                 </span>
               </div>
             </div>
@@ -110,11 +110,11 @@
               <button 
                 class="btn-evolve" 
                 (click)="evolveSize(xuxemon, $event)" 
-                [disabled]="xuxemon.size === 'Grande'"
+                [disabled]="xuxemon.tamano === 'Grande'"
               >
-                @if (xuxemon.size === 'Pequeño') {
+                @if (xuxemon.tamano === 'Pequeño') {
                   Evolucionar a Mediano
-                } @else if (xuxemon.size === 'Mediano') {
+                } @else if (xuxemon.tamano === 'Mediano') {
                   Evolucionar a Grande
                 } @else {
                   Tamaño máximo

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\XuxemonController;
+use App\Http\Controllers\InventarioController;
 
 // RUTAS PÚBLICAS (No necesitan Token) ---
 Route::post('/register', [AuthController::class, 'register']);
@@ -49,3 +50,20 @@ Route::delete('/users/{id}', [AuthController::class, 'destroy']);
 
 // Ruta para actualizar el perfil del usuario
 Route::put('/users/{id}', [AuthController::class, 'update']);
+
+
+// RUTAS DE INVENTARIO
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('/inventario', [InventarioController::class, 'index']);
+    Route::post('/inventario', [InventarioController::class, 'store']);
+    Route::put('/inventario/{id}', [InventarioController::class, 'update']);
+    Route::delete('/inventario/{id}', [InventarioController::class, 'destroy']);
+});
+
+
+// RUTAS DE MOCHILA (XUXES)
+Route::middleware(['auth:api'])->group(function () {
+    Route::get('/mochila', [App\Http\Controllers\MochilaController::class, 'index']);
+    Route::post('/mochila', [App\Http\Controllers\MochilaController::class, 'store']);
+    Route::delete('/mochila/{id}', [App\Http\Controllers\MochilaController::class, 'destroy']);
+});
