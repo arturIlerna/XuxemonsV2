@@ -1,0 +1,56 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <a routerLink="/dashboard" class="nav-brand">Xuxemons</a>
+    <ul class="nav-menu">
+      <li><a routerLink="/xuxedex">Xuxedex</a></li>
+      <li><a routerLink="/inventory">Mochila</a></li>
+      <li><a routerLink="/friends">Amigos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="battle-result-container text-center" aria-live="assertive">
+  @if (result) {
+    <div class="result-card card shadow-lg mt-5 p-5">
+      <h1 class="display-4 mb-4">
+        @if (result.winner === 'you') {
+          <span class="text-success">¡HAS GANADO! 🎉</span>
+        } @else if (result.winner === 'friend') {
+          <span class="text-danger">HAS PERDIDO 😢</span>
+        } @else {
+          <span class="text-warning">¡EMPATE! 🤝</span>
+        }
+      </h1>
+
+      <div class="dice-rolls d-flex justify-content-center gap-5 my-4">
+        <div class="player-roll">
+          <h3>Tu Tirada</h3>
+          <div class="dice">{{ result.your_roll }}</div>
+          <p class="mt-2 text-muted">+ Mods: {{ result.your_mods }}</p>
+          <h4>Total: {{ result.your_total }}</h4>
+        </div>
+        <div class="vs">
+          <h2>VS</h2>
+        </div>
+        <div class="friend-roll">
+          <h3>Tirada Rival</h3>
+          <div class="dice">{{ result.friend_roll }}</div>
+          <p class="mt-2 text-muted">+ Mods: {{ result.friend_mods }}</p>
+          <h4>Total: {{ result.friend_total }}</h4>
+        </div>
+      </div>
+
+      <div class="prize-info my-4">
+        @if (result.winner === 'you') {
+          <p class="lead">¡Le has robado a {{ result.stolen_xuxemon?.name }}!</p>
+        } @else if (result.winner === 'friend') {
+          <p class="lead">Tu amigo te ha robado a {{ result.lost_xuxemon?.name }}</p>
+        }
+      </div>
+
+      <a routerLink="/friends" class="btn btn-primary btn-lg mt-3">Volver a Amigos</a>
+    </div>
+  } @else {
+    <p>Cargando resultados...</p>
+  }
+</main>

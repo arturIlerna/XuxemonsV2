@@ -1,0 +1,62 @@
+.battle-result-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.result-card {
+  border-radius: 15px;
+}
+
+.dice {
+  font-size: 3rem;
+  font-weight: bold;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  margin: 0 auto;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background: #f8f9fa;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  animation: roll 0.5s ease-out;
+}
+
+.vs {
+  display: flex;
+  align-items: center;
+  color: #dc3545;
+}
+
+@keyframes roll {
+  0% { transform: rotate(0deg) scale(0.5); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Nav */
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+}

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('xuxemon_id')->constrained()->onDelete('cascade');
             // Tamaño actual de ESTE Xuxemon en concreto (para cuando crezcan)
             $table->string('size')->default('Pequeño'); 
+            $table->string('enfermedad')->nullable();
             $table->timestamps();
         });
     }

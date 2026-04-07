@@ -1,0 +1,46 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <a routerLink="/dashboard" class="nav-brand">Xuxemons</a>
+    <ul class="nav-menu">
+      <li><a routerLink="/xuxedex">Xuxedex</a></li>
+      <li><a routerLink="/inventory">Mochila</a></li>
+      <li><a routerLink="/friends">Amigos</a></li>
+    </ul>
+    <div class="nav-user">
+      <span>{{ userName }}</span>
+      <button class="btn-logout">Cerrar sesión</button>
+    </div>
+  </div>
+</nav>
+
+<main class="chat-container">
+  <header class="chat-header">
+    <a routerLink="/friends" class="btn btn-secondary back-btn">&larr; Volver</a>
+    <h2>Chat con Amigo</h2>
+  </header>
+
+  <div class="chat-box" #scrollMe role="log" aria-live="polite">
+    @for (msg of messages; track msg.id) {
+      <div class="message" [ngClass]="{'mine': msg.sender_id == myId, 'theirs': msg.sender_id != myId}">
+        <span class="sender-name">{{ msg.sender_id == myId ? 'Tú' : msg.sender.name }}</span>
+        <div class="message-content">
+          {{ msg.message }}
+        </div>
+        <div class="timestamp">
+          {{ msg.created_at | date:'shortTime' }}
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="chat-input-area">
+    <input
+      type="text"
+      [(ngModel)]="newMessage"
+      (keyup.enter)="sendMessage()"
+      placeholder="Escribe un mensaje..."
+      class="form-control"
+    >
+    <button class="btn btn-primary" (click)="sendMessage()">Enviar</button>
+  </div>
+</main>
