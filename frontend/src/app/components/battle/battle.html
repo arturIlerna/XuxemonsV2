@@ -1,0 +1,56 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <a routerLink="/dashboard" class="nav-brand">Xuxemons</a>
+    <ul class="nav-menu">
+      <li><a routerLink="/xuxedex">Xuxedex</a></li>
+      <li><a routerLink="/inventory">Mochila</a></li>
+      <li><a routerLink="/friends">Amigos</a></li>
+    </ul>
+    <div class="nav-user">
+      <span>{{ userName }}</span>
+      <button class="btn-logout">Cerrar sesión</button>
+    </div>
+  </div>
+</nav>
+
+<main class="battle-container">
+  <header class="page-header">
+    <h1>Arena de Batalla</h1>
+    <p>Selecciona a tu Xuxemon para combatir</p>
+  </header>
+
+  <section class="arena-grid">
+    <div class="my-team">
+      <h2>Mis Xuxemons Sanos</h2>
+      <ul class="xuxemon-list">
+        @for (xuxemon of myHealthyXuxemons; track xuxemon.id) {
+          <li
+            class="xuxemon-item"
+            [class.selected]="selectedXuxemon?.id === xuxemon.id"
+            (click)="selectXuxemon(xuxemon)">
+            <span class="x-name">{{ xuxemon.name }}</span>
+            <span class="badge badge-type">{{ xuxemon.type }}</span>
+            <span class="badge badge-size">{{ xuxemon.size }}</span>
+          </li>
+        }
+        @if (myHealthyXuxemons.length === 0) {
+          <p>No tienes Xuxemons sanos para la batalla.</p>
+        }
+      </ul>
+    </div>
+
+    <div class="battle-action">
+      @if (selectedXuxemon) {
+        <div class="selected-preview">
+          <h3>Elegiste: {{ selectedXuxemon.name }}</h3>
+          <p>Tipos: {{ selectedXuxemon.type }} | Tamaño: {{ selectedXuxemon.size }}</p>
+          <button class="btn btn-danger btn-lg mt-3" (click)="fight()">¡A LUCHAR!</button>
+        </div>
+      } @else {
+        <div class="selected-preview empty">
+          <p>Esperando selección...</p>
+        </div>
+      }
+    </div>
+  </section>
+</main>

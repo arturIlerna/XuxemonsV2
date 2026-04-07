@@ -1,0 +1,94 @@
+.battle-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.arena-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.xuxemon-list {
+  list-style: none;
+  padding: 0;
+}
+
+.xuxemon-item {
+  padding: 15px;
+  border: 2px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.xuxemon-item:hover {
+  background: #f0f8ff;
+}
+
+.xuxemon-item.selected {
+  border-color: #007bff;
+  background: #e6f2ff;
+  box-shadow: 0 0 10px rgba(0,123,255,0.3);
+}
+
+.selected-preview {
+  padding: 30px;
+  border: 2px dashed #007bff;
+  border-radius: 8px;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.selected-preview.empty {
+  border-color: #ccc;
+  color: #999;
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: white;
+  margin-left: 5px;
+}
+.badge-type { background: #17a2b8; }
+.badge-size { background: #6c757d; }
+
+/* Nav */
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+}

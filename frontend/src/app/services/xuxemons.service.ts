@@ -12,6 +12,7 @@ export interface Xuxemon {
   attack: number;
   defense: number;
   captured: boolean;
+  enfermedad?: 'Bajón de azúcar' | 'Atracón' | null;
 }
 
 @Injectable({
@@ -35,5 +36,27 @@ export class XuxemonsService {
 
   constructor(private http: HttpClient) {
     this.xuxemonsSubject.next(this.mockXuxemons);
+  }
+
+  // Método simulado para conectarse al backend y ver la colección de Xuxemons del usuario
+  getMyCollection(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/my-xuxemons`);
+  }
+
+  // Método para alimentar un Xuxemon
+  feedXuxemon(xuxemonId: number, xuxeId: number, quantity: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/xuxemons/feed`, {
+      xuxemon_id: xuxemonId,
+      xuxe_id: xuxeId,
+      quantity: quantity
+    });
+  }
+
+  // Método para aplicar vacuna a un Xuxemon
+  vaccinateXuxemon(xuxemonId: number, vacunaId: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/xuxemons/vaccinate`, {
+      xuxemon_id: xuxemonId,
+      vacuna_id: vacunaId
+    });
   }
 }

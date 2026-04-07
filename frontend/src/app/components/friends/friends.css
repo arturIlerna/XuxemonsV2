@@ -1,0 +1,49 @@
+.friends-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-section, .requests-section, .friends-list-section {
+  margin-bottom: 30px;
+}
+
+.user-card, .request-card {
+  margin-bottom: 10px;
+}
+
+/* Nav styles basic */
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+}
+.nav-menu a.active {
+  text-decoration: underline;
+}
+.nav-user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

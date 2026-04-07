@@ -1,0 +1,22 @@
+❯ Building...
+✔ Building...
+Initial chunk files | Names         |  Raw size
+main.js             | main          | 163.61 kB |
+chunk-K6VOY7XV.js   | -             |   2.96 kB |
+chunk-SG2LYVAH.js   | -             | 894 bytes |
+styles.css          | styles        |  95 bytes |
+
+                    | Initial total | 167.56 kB
+
+Lazy chunk files    | Names         |  Raw size
+chunk-KC5UUUZF.js   | friends       |  21.98 kB |
+chunk-2HIXNG37.js   | chat          |  16.30 kB |
+chunk-PAAQ7H4Z.js   | battle        |  14.97 kB |
+chunk-23ELGTX6.js   | battle-result |  13.75 kB |
+chunk-BCPUU6LZ.js   | -             |   1.52 kB |
+
+Application bundle generation complete. [4.192 seconds] - 2026-04-07T21:11:57.719Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  ➜  Local:   http://localhost:4200/

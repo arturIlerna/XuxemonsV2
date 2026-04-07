@@ -74,18 +74,48 @@ export class Xuxedex implements OnInit, OnDestroy {
 
   evolveSize(xuxemon: Xuxemon, event: Event) {
     event.stopPropagation();
-    if (xuxemon.size === 'Pequeño') {
-      xuxemon.size = 'Mediano';
-      xuxemon.attack += 20;
-      xuxemon.defense += 15;
-      xuxemon.level += 5;
-    } else if (xuxemon.size === 'Mediano') {
-      xuxemon.size = 'Grande';
-      xuxemon.attack += 20;
-      xuxemon.defense += 15;
-      xuxemon.level += 5;
-    } else {
+    if (xuxemon.size === 'Grande') {
       alert('¡Ya es tamaño Grande! No puede evolucionar más');
+      return;
+    }
+
+    let neededXuxes = xuxemon.size === 'Pequeño' ? 3 : 5;
+    if (xuxemon.enfermedad === 'Bajón de azúcar') neededXuxes += 2;
+
+    if (xuxemon.enfermedad === 'Atracón') {
+      alert(`¡${xuxemon.name} no puede comer porque tiene Atracón!`);
+      return;
+    }
+
+    const confirmEvolution = confirm(`¿Quieres alimentar a ${xuxemon.name}? Necesitas ${neededXuxes} Xuxes para subir de tamaño.`);
+
+    if (confirmEvolution) {
+      // Aplicar sistema de infección simulado para el Nivel 3 (en frontend si no está en backend)
+      const prob = Math.random() * 100;
+      if (prob <= 5) {
+        xuxemon.enfermedad = 'Bajón de azúcar';
+        alert(`Oh no, ${xuxemon.name} pilló Bajón de azúcar.`);
+      } else if (prob > 5 && prob <= 15) {
+        // "Sobredosis de sucre" en frontend no tiene efectos extras a "Bajón de azúcar" según documento, pero se podría modelar si se precisa.
+        alert(`Oh no, ${xuxemon.name} tuvo una Sobredosis de sucre.`);
+      } else if (prob > 15 && prob <= 30) {
+        xuxemon.enfermedad = 'Atracón';
+        alert(`Oh no, ${xuxemon.name} pilló un Atracón.`);
+      }
+
+      if (xuxemon.size === 'Pequeño') {
+        xuxemon.size = 'Mediano';
+        xuxemon.attack += 20;
+        xuxemon.defense += 15;
+        xuxemon.level += 5;
+        alert(`¡${xuxemon.name} ha evolucionado a tamaño Mediano!`);
+      } else if (xuxemon.size === 'Mediano') {
+        xuxemon.size = 'Grande';
+        xuxemon.attack += 20;
+        xuxemon.defense += 15;
+        xuxemon.level += 5;
+        alert(`¡${xuxemon.name} ha evolucionado a tamaño Grande!`);
+      }
     }
   }
 

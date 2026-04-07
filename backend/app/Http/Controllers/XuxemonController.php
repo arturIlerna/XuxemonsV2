@@ -20,7 +20,7 @@ class XuxemonController extends Controller
     {
         $myCollection = UserXuxemon::join('xuxemons', 'user_xuxemons.xuxemon_id', '=', 'xuxemons.id')
             ->where('user_xuxemons.user_id', auth()->id())
-            ->select('xuxemons.*', 'user_xuxemons.size as current_size') 
+            ->select('xuxemons.*', 'user_xuxemons.size as current_size', 'user_xuxemons.enfermedad', 'user_xuxemons.id as user_xuxemon_id')
             ->get();
             
         return response()->json($myCollection, 200);
